@@ -1,0 +1,29 @@
+<!-- UNIS-001 T4: figura de ejemplo del catálogo («Slider de pasos», paso 3 de 4: cómo calcular el 25 % de
+     40 estudiantes), dibujada en la familia gráfica de UNIS (INSTITUCION §1.4), de la misma mano que
+     ilustracion-descarga.svg: formas planas sin trazo de contorno ni sombra, el disco amarillo recortado por
+     el borde, el semicírculo rojo en la base y el anillo guinda en la esquina, iguales en las cuatro figuras
+     de la serie. Paleta de skin/paleta.css; fondo #F3EEEC (superficie apagada), porque va en un panel blanco.
+     Qué se ve: una tarjeta blanca con la operación «40 × 0,25 =» y el resultado, «10», en un círculo.
+     Lo destacado va en guinda (el resultado de la operación); el amarillo es solo el disco de fondo.
+     Texto: solo los rótulos del ejemplo, en Gotham (con la fuente del sistema si no está instalada). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 400" width="560" height="400" role="img" aria-label="Una tarjeta blanca con la operación 40 por 0,25 igual a 10, con el resultado 10 destacado en un círculo guinda.">
+  <!-- fondo y key visual de la serie -->
+  <rect width="560" height="400" fill="#F3EEEC"/>
+  <circle cx="280" cy="200" r="236" fill="#FCC146"/>
+  <path d="M16 400 a80 80 0 0 1 160 0 z" fill="#D32E3F"/>
+  <circle cx="500" cy="340" r="30" fill="none" stroke="#840029" stroke-width="11"/>
+  <!-- la operación -->
+  <rect x="64" y="116" width="432" height="168" rx="8" fill="#FFFFFF"/>
+  <!-- rótulo: 40 -->
+  <path fill="#5C001D" d="M101.05 217H108.1V209.75H112.62V203.75H108.1V183.16H101.86L83.43 204.52L84.63 209.75H101.05ZM92.12 203.75 101.05 193.29V203.75ZM132.49 217.58C141.46 217.58 147.46 209.94 147.46 200.2V200.1C147.46 190.31 141.46 182.82 132.58 182.82C123.61 182.82 117.61 190.46 117.61 200.2V200.3C117.61 210.09 123.46 217.58 132.49 217.58ZM132.58 210.9C128.12 210.9 125.19 206.34 125.19 200.2V200.1C125.19 193.96 128.07 189.5 132.49 189.5C136.9 189.5 139.88 194.1 139.88 200.2V200.3C139.88 206.44 137.05 210.9 132.58 210.9Z"/>
+  <!-- rótulo: × -->
+  <path fill="#840029" d="M182.8 210.25 186.04 207.02 179.07 200.17 186.04 193.33 182.89 190.18 176.04 197.15 169.2 190.18 165.96 193.41 172.93 200.26 165.96 207.1 169.11 210.25 175.96 203.28Z"/>
+  <!-- rótulo: 0,25 -->
+  <path fill="#5C001D" d="M221.02 217.58C229.99 217.58 235.99 209.94 235.99 200.2V200.1C235.99 190.31 229.99 182.82 221.11 182.82C212.14 182.82 206.14 190.46 206.14 200.2V200.3C206.14 210.09 211.99 217.58 221.02 217.58ZM221.11 210.9C216.65 210.9 213.72 206.34 213.72 200.2V200.1C213.72 193.96 216.6 189.5 221.02 189.5C225.43 189.5 228.41 194.1 228.41 200.2V200.3C228.41 206.44 225.58 210.9 221.11 210.9ZM240.46 224.78C246.17 224.73 249.34 222.14 249.34 215.8V209.32H241.56V217H244.54C244.78 219.83 243.24 221.42 239.83 221.75ZM254.66 217H279.53V210.62H264.89L270.36 206.39C276.31 201.74 279.19 199.05 279.19 193.38V193.29C279.19 187 274.54 182.92 267.62 182.92C261.62 182.92 258.41 185.42 255.1 189.88L260.28 194.06C262.78 190.98 264.5 189.54 267.14 189.54C269.83 189.54 271.66 191.03 271.66 193.91C271.66 196.7 270.07 198.52 265.85 201.98L254.66 211.14ZM296.86 217.58C304.58 217.58 309.62 213.06 309.62 205.96V205.86C309.62 198.33 304.39 195.11 297.86 195.11C295.99 195.11 294.79 195.35 293.45 195.69L293.83 189.88H308.14V183.4H287.5L286.54 199.96L290.81 202.79C292.39 202.07 294.31 201.54 296.42 201.54C299.93 201.54 302.38 203.22 302.38 206.1V206.2C302.38 209.22 300.22 210.86 296.76 210.86C293.74 210.86 291.29 209.51 288.74 207.21L284.28 212.54C287.54 215.66 291.43 217.58 296.86 217.58Z"/>
+  <!-- rótulo: = -->
+  <path fill="#840029" d="M329.88 197.32H350.12V192.61H329.88ZM329.88 207.82H350.12V203.11H329.88Z"/>
+  <!-- el resultado: lo destacado -->
+  <circle cx="420" cy="200" r="50" fill="#840029"/>
+  <!-- rótulo: 10 -->
+  <path fill="#FFFFFF" d="M400.9 217H408.19V183.16H403.15L393.5 186.04L395.04 192.09L400.9 190.65ZM430.08 217.58C439.06 217.58 445.06 209.94 445.06 200.2V200.1C445.06 190.31 439.06 182.82 430.18 182.82C421.2 182.82 415.2 190.46 415.2 200.2V200.3C415.2 210.09 421.06 217.58 430.08 217.58ZM430.18 210.9C425.71 210.9 422.78 206.34 422.78 200.2V200.1C422.78 193.96 425.66 189.5 430.08 189.5C434.5 189.5 437.47 194.1 437.47 200.2V200.3C437.47 206.44 434.64 210.9 430.18 210.9Z"/>
+</svg>

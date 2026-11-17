@@ -1,0 +1,72 @@
+<!-- UNIS-001 T4: figura de ejemplo del catálogo («Slider de pasos», paso 4 de 4: cómo calcular el 25 % de
+     40 estudiantes), dibujada en la familia gráfica de UNIS (INSTITUCION §1.4), de la misma mano que
+     ilustracion-descarga.svg: formas planas sin trazo de contorno ni sombra, el disco amarillo recortado por
+     el borde, el semicírculo rojo en la base y el anillo guinda en la esquina, iguales en las cuatro figuras
+     de la serie. Paleta de skin/paleta.css; fondo #F3EEEC (superficie apagada), porque va en un panel blanco.
+     Qué se ve: cuarenta figuras de estudiantes en cuatro filas de diez; la primera fila, diez figuras, en guinda
+     y las otras treinta en gris: se ve la cuarta parte.
+     Lo destacado va en guinda (las diez figuras); el amarillo es solo el disco de fondo.
+     Texto: solo los rótulos del ejemplo, en Gotham (con la fuente del sistema si no está instalada). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 400" width="560" height="400" role="img" aria-label="Cuarenta figuras de estudiantes en cuatro filas de diez; la primera fila, diez figuras, resaltada en guinda y las otras treinta en gris.">
+  <!-- fondo y key visual de la serie -->
+  <rect width="560" height="400" fill="#F3EEEC"/>
+  <circle cx="280" cy="200" r="236" fill="#FCC146"/>
+  <path d="M16 400 a80 80 0 0 1 160 0 z" fill="#D32E3F"/>
+  <circle cx="500" cy="340" r="30" fill="none" stroke="#840029" stroke-width="11"/>
+  <defs>
+    <g id="slider-porcentaje-4-persona"><circle cx="0" cy="-13" r="8.5"/><path d="M-15 20 v-3 a15 15 0 0 1 30 0 v3 z"/></g>
+  </defs>
+  <rect x="68" y="58" width="424" height="284" rx="8" fill="#FFFFFF"/>
+  <!-- fila 1: las diez resaltadas -->
+  <g fill="#840029">
+    <use href="#slider-porcentaje-4-persona" x="100" y="104"/>
+    <use href="#slider-porcentaje-4-persona" x="140" y="104"/>
+    <use href="#slider-porcentaje-4-persona" x="180" y="104"/>
+    <use href="#slider-porcentaje-4-persona" x="220" y="104"/>
+    <use href="#slider-porcentaje-4-persona" x="260" y="104"/>
+    <use href="#slider-porcentaje-4-persona" x="300" y="104"/>
+    <use href="#slider-porcentaje-4-persona" x="340" y="104"/>
+    <use href="#slider-porcentaje-4-persona" x="380" y="104"/>
+    <use href="#slider-porcentaje-4-persona" x="420" y="104"/>
+    <use href="#slider-porcentaje-4-persona" x="460" y="104"/>
+  </g>
+  <!-- fila 2: diez en gris -->
+  <g fill="#9F9D98">
+    <use href="#slider-porcentaje-4-persona" x="100" y="168"/>
+    <use href="#slider-porcentaje-4-persona" x="140" y="168"/>
+    <use href="#slider-porcentaje-4-persona" x="180" y="168"/>
+    <use href="#slider-porcentaje-4-persona" x="220" y="168"/>
+    <use href="#slider-porcentaje-4-persona" x="260" y="168"/>
+    <use href="#slider-porcentaje-4-persona" x="300" y="168"/>
+    <use href="#slider-porcentaje-4-persona" x="340" y="168"/>
+    <use href="#slider-porcentaje-4-persona" x="380" y="168"/>
+    <use href="#slider-porcentaje-4-persona" x="420" y="168"/>
+    <use href="#slider-porcentaje-4-persona" x="460" y="168"/>
+  </g>
+  <!-- fila 3: diez en gris -->
+  <g fill="#9F9D98">
+    <use href="#slider-porcentaje-4-persona" x="100" y="232"/>
+    <use href="#slider-porcentaje-4-persona" x="140" y="232"/>
+    <use href="#slider-porcentaje-4-persona" x="180" y="232"/>
+    <use href="#slider-porcentaje-4-persona" x="220" y="232"/>
+    <use href="#slider-porcentaje-4-persona" x="260" y="232"/>
+    <use href="#slider-porcentaje-4-persona" x="300" y="232"/>
+    <use href="#slider-porcentaje-4-persona" x="340" y="232"/>
+    <use href="#slider-porcentaje-4-persona" x="380" y="232"/>
+    <use href="#slider-porcentaje-4-persona" x="420" y="232"/>
+    <use href="#slider-porcentaje-4-persona" x="460" y="232"/>
+  </g>
+  <!-- fila 4: diez en gris -->
+  <g fill="#9F9D98">
+    <use href="#slider-porcentaje-4-persona" x="100" y="296"/>
+    <use href="#slider-porcentaje-4-persona" x="140" y="296"/>
+    <use href="#slider-porcentaje-4-persona" x="180" y="296"/>
+    <use href="#slider-porcentaje-4-persona" x="220" y="296"/>
+    <use href="#slider-porcentaje-4-persona" x="260" y="296"/>
+    <use href="#slider-porcentaje-4-persona" x="300" y="296"/>
+    <use href="#slider-porcentaje-4-persona" x="340" y="296"/>
+    <use href="#slider-porcentaje-4-persona" x="380" y="296"/>
+    <use href="#slider-porcentaje-4-persona" x="420" y="296"/>
+    <use href="#slider-porcentaje-4-persona" x="460" y="296"/>
+  </g>
+</svg>

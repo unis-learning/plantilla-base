@@ -1,0 +1,113 @@
+<!-- Ilustración de marca · UNIS Virtual · plantilla-base, tema 2 (muestra de la familia, UNIS-001 T4).
+     Familia gráfica de UNIS (INSTITUCION §1.4), de la misma mano que ilustracion-descarga.svg: formas
+     planas sin trazo de contorno ni sombra, el disco guinda hondo recortado por el borde, el semicírculo
+     rojo en la base y el anillo guinda. Paleta de skin/paleta.css. Sin texto ni fuentes.
+     Izquierda, lo que se volvió abundante: una herramienta de IA y el mismo análisis para cuatro personas.
+     Derecha, lo que se volvió escaso: una sola persona que pregunta, señala entre tres análisis iguales
+     el que está mal y sostiene su recomendación ante quien la cuestiona.
+     Único amarillo: el contorno de la tarjeta del criterio. -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 440" width="1200" height="440" role="img"
+     aria-label="Dos tarjetas unidas por una flecha. A la izquierda, una herramienta de IA entrega el mismo análisis a cuatro personas. A la derecha, con el contorno en amarillo, una sola persona pregunta, señala el análisis que está mal y sostiene su recomendación.">
+  <defs>
+    <clipPath id="ilu-criterio-marco"><rect width="1200" height="440" rx="14"/></clipPath>
+    <!-- un análisis: cabecera, una línea y tres barras que suben -->
+    <g id="ilu-criterio-hoja">
+      <rect width="64" height="82" rx="8" fill="#F3EEEC"/>
+      <rect width="64" height="18" rx="8" fill="#840029"/>
+      <rect y="10" width="64" height="8" fill="#840029"/>
+      <rect x="10" y="27" width="44" height="5" rx="2.5" fill="#9F9D98"/>
+      <rect x="11" y="52" width="10" height="20" rx="3" fill="#D32E3F"/>
+      <rect x="27" y="44" width="10" height="28" rx="3" fill="#840029"/>
+      <rect x="43" y="36" width="10" height="36" rx="3" fill="#5C001D"/>
+    </g>
+    <!-- una persona: silueta plana, cabeza y hombros -->
+    <g id="ilu-criterio-persona">
+      <circle r="15"/>
+      <path d="M-27 88 v-36 a27 27 0 0 1 54 0 v36 z"/>
+    </g>
+    <g id="ilu-criterio-persona-chica">
+      <circle r="11"/>
+      <path d="M-19 58 v-22 a19 19 0 0 1 38 0 v22 z"/>
+    </g>
+    <!-- el signo de pregunta, dibujado -->
+    <g id="ilu-criterio-pregunta" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-11 -9 a11 11 0 1 1 17 9 q-6 4 -6 11"/>
+    </g>
+  </defs>
+
+  <g clip-path="url(#ilu-criterio-marco)">
+    <rect width="1200" height="440" fill="#F3EEEC"/>
+
+    <!-- key visual detrás -->
+    <circle cx="900" cy="220" r="340" fill="#5C001D"/>
+    <path d="M10 440 a100 100 0 0 1 200 0 z" fill="#D32E3F"/>
+    <circle cx="540" cy="398" r="24" fill="none" stroke="#840029" stroke-width="10"/>
+
+    <!-- ══ Izquierda · una herramienta de IA y el mismo análisis para cada quien ══ -->
+    <rect x="40" y="48" width="460" height="344" rx="14" fill="#FFFFFF"/>
+    <!-- la herramienta: ventana, respuesta y barra de pregunta -->
+    <rect x="185" y="70" width="170" height="98" rx="8" fill="#F3EEEC"/>
+    <rect x="185" y="70" width="170" height="24" rx="8" fill="#5C001D"/>
+    <rect x="185" y="84" width="170" height="10" fill="#5C001D"/>
+    <g fill="#FFFFFF">
+      <circle cx="199" cy="82" r="3.5"/>
+      <circle cx="211" cy="82" r="3.5"/>
+      <circle cx="223" cy="82" r="3.5"/>
+    </g>
+    <rect x="199" y="104" width="110" height="7" rx="3.5" fill="#9F9D98"/>
+    <rect x="199" y="117" width="78" height="7" rx="3.5" fill="#9F9D98"/>
+    <rect x="197" y="134" width="146" height="24" rx="12" fill="#FFFFFF"/>
+    <circle cx="329" cy="146" r="9" fill="#840029"/>
+    <path d="M329 150 v-8 M325.5 145 l3.5 -3.5 l3.5 3.5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- de la herramienta a cada persona -->
+    <g fill="none" stroke="#840029" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M270 172 V186"/>
+      <path d="M98 206 V198 a12 12 0 0 1 12 -12 H430 a12 12 0 0 1 12 12 V206"/>
+      <path d="M213 186 V206 M327 186 V206"/>
+      <path d="M90 199 l8 8 l8 -8 M205 199 l8 8 l8 -8 M319 199 l8 8 l8 -8 M434 199 l8 8 l8 -8"/>
+    </g>
+    <use href="#ilu-criterio-hoja" xlink:href="#ilu-criterio-hoja" x="66"  y="218"/>
+    <use href="#ilu-criterio-hoja" xlink:href="#ilu-criterio-hoja" x="181" y="218"/>
+    <use href="#ilu-criterio-hoja" xlink:href="#ilu-criterio-hoja" x="295" y="218"/>
+    <use href="#ilu-criterio-hoja" xlink:href="#ilu-criterio-hoja" x="410" y="218"/>
+    <!-- cuatro personas, cada una con su copia -->
+    <g fill="#9F9D98">
+      <use href="#ilu-criterio-persona-chica" xlink:href="#ilu-criterio-persona-chica" x="98"  y="322"/>
+      <use href="#ilu-criterio-persona-chica" xlink:href="#ilu-criterio-persona-chica" x="213" y="322"/>
+      <use href="#ilu-criterio-persona-chica" xlink:href="#ilu-criterio-persona-chica" x="327" y="322"/>
+      <use href="#ilu-criterio-persona-chica" xlink:href="#ilu-criterio-persona-chica" x="442" y="322"/>
+    </g>
+
+    <!-- la flecha que une las dos tarjetas -->
+    <path d="M512 220 H540 M529 208 l12 12 l-12 12" fill="none" stroke="#840029" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- ══ Derecha · el criterio: una persona, tres momentos ══ -->
+    <!-- ÚNICO AMARILLO: el contorno de la tarjeta del criterio -->
+    <rect x="622" y="42" width="536" height="356" rx="22" fill="#FCC146"/>
+    <rect x="630" y="50" width="520" height="340" rx="14" fill="#FFFFFF"/>
+
+    <!-- 1 · pregunta -->
+    <path d="M680 88 h64 a16 16 0 0 1 16 16 v48 a16 16 0 0 1 -16 16 h-40 l-20 22 v-22 h-4 a16 16 0 0 1 -16 -16 v-48 a16 16 0 0 1 16 -16 z" fill="#5C001D"/>
+    <use href="#ilu-criterio-pregunta" xlink:href="#ilu-criterio-pregunta" x="712" y="120" stroke-width="7"/>
+    <circle cx="712" cy="148" r="4.5" fill="#FFFFFF"/>
+    <use href="#ilu-criterio-persona" xlink:href="#ilu-criterio-persona" x="712" y="264" fill="#840029"/>
+
+    <!-- 2 · señala, entre tres análisis iguales, el que está mal -->
+    <use href="#ilu-criterio-hoja" xlink:href="#ilu-criterio-hoja" transform="translate(800 104) scale(.8)"/>
+    <use href="#ilu-criterio-hoja" xlink:href="#ilu-criterio-hoja" transform="translate(862 104) scale(.8)"/>
+    <use href="#ilu-criterio-hoja" xlink:href="#ilu-criterio-hoja" transform="translate(924 104) scale(.8)"/>
+    <circle cx="973" cy="106" r="14" fill="#D32E3F"/>
+    <path d="M967 100 l12 12 M979 100 l-12 12" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M886 304 L938 190" fill="none" stroke="#840029" stroke-width="12" stroke-linecap="round"/>
+    <use href="#ilu-criterio-persona" xlink:href="#ilu-criterio-persona" x="872" y="264" fill="#840029"/>
+
+    <!-- 3 · sostiene su recomendación ante quien la cuestiona -->
+    <use href="#ilu-criterio-hoja" xlink:href="#ilu-criterio-hoja" transform="translate(1012 148) scale(.8)"/>
+    <path d="M1018 304 L1036 224" fill="none" stroke="#840029" stroke-width="12" stroke-linecap="round"/>
+    <use href="#ilu-criterio-persona" xlink:href="#ilu-criterio-persona" x="1004" y="264" fill="#840029"/>
+    <path d="M1086 96 h30 a12 12 0 0 1 12 12 v22 a12 12 0 0 1 -12 12 h-8 v16 l-14 -16 h-8 a12 12 0 0 1 -12 -12 v-22 a12 12 0 0 1 12 -12 z" fill="#9F9D98"/>
+    <use href="#ilu-criterio-pregunta" xlink:href="#ilu-criterio-pregunta" transform="translate(1101 114) scale(.55)" stroke-width="8"/>
+    <circle cx="1101" cy="130" r="2.8" fill="#FFFFFF"/>
+    <use href="#ilu-criterio-persona" xlink:href="#ilu-criterio-persona" x="1100" y="264" fill="#9F9D98"/>
+  </g>
+</svg>

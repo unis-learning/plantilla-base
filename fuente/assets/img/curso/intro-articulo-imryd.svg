@@ -1,0 +1,63 @@
+<!-- Ilustración de marca · UNIS Virtual · plantilla-base, introducción (apertura; UNIS-001 T6).
+     Familia gráfica de UNIS (INSTITUCION §1.4), de la misma mano que las muestras del tema 2: formas
+     planas sin trazo de contorno ni sombra, el disco guinda hondo recortado por el borde, el semicírculo
+     rojo en la base y el anillo guinda en la esquina. Paleta de skin/paleta.css.
+     Idea: el artículo académico es un texto con una estructura acordada. Sobre el disco, el artículo
+     partido en sus cuatro secciones, sujetas por un mismo lomo que lleva la inicial de cada una
+     (introducción, método, resultados y discusión: IMRyD). A la izquierda, un lector lo señala.
+     Único amarillo: el lomo, la estructura. Rótulos: las cuatro iniciales, pasadas a trazos de Gotham. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" width="1200" height="440" role="img"
+     aria-label="A la izquierda, un lector señala un artículo. El artículo ocupa la derecha, partido en cuatro bloques de texto unidos por un lomo amarillo con las letras I, M, R y D, una por sección.">
+  <defs>
+    <clipPath id="ilu-imryd-marco"><rect width="1200" height="440" rx="14"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#ilu-imryd-marco)">
+    <rect width="1200" height="440" fill="#F3EEEC"/>
+
+    <!-- key visual detrás -->
+    <circle cx="880" cy="220" r="340" fill="#5C001D"/>
+    <path d="M36 440 a116 116 0 0 1 232 0 z" fill="#D32E3F"/>
+    <circle cx="92" cy="66" r="24" fill="none" stroke="#840029" stroke-width="10"/>
+
+    <!-- ══ El lector: una silueta que señala el artículo ══ -->
+    <path d="M330 330 L486 158" fill="none" stroke="#840029" stroke-width="30" stroke-linecap="round"/>
+    <circle cx="300" cy="196" r="36" fill="#840029"/>
+    <path d="M235 450 V321 a65 65 0 0 1 130 0 V450 z" fill="#840029"/>
+
+    <!-- ══ El artículo: su título y, debajo, las cuatro secciones ══ -->
+    <rect x="610" y="38" width="424" height="44" rx="8" fill="#FFFFFF"/>
+    <rect x="636" y="55" width="220" height="10" rx="5" fill="#840029"/>
+    <g fill="#FFFFFF">
+      <rect x="690" y="92"  width="344" height="70" rx="8"/>
+      <rect x="690" y="172" width="344" height="70" rx="8"/>
+      <rect x="690" y="252" width="344" height="70" rx="8"/>
+      <rect x="690" y="332" width="344" height="70" rx="8"/>
+    </g>
+    <g fill="#E8E1DE">
+      <rect x="734" y="112" width="262" height="10" rx="5"/>
+      <rect x="734" y="132" width="184" height="10" rx="5"/>
+      <rect x="734" y="192" width="236" height="10" rx="5"/>
+      <rect x="734" y="212" width="262" height="10" rx="5"/>
+      <rect x="734" y="272" width="262" height="10" rx="5"/>
+      <rect x="734" y="292" width="154" height="10" rx="5"/>
+      <rect x="734" y="352" width="216" height="10" rx="5"/>
+      <rect x="734" y="372" width="262" height="10" rx="5"/>
+    </g>
+
+    <!-- ÚNICO AMARILLO: el lomo que sujeta las cuatro secciones, la estructura acordada -->
+    <rect x="610" y="92" width="98" height="310" rx="8" fill="#FCC146"/>
+
+    <!-- Las iniciales de las cuatro secciones, literales (IMRyD) -->
+    <g font-size="48" font-weight="500" text-anchor="middle" fill="#5C001D" transform="translate(-10 0)">
+      <!-- rótulo: I -->
+      <path fill="#5C001D" d="M666.05 143.8H671.95V110.2H666.05Z"/>
+      <!-- rótulo: M -->
+      <path fill="#5C001D" d="M652.49 223.8H658.3V199.8L668.81 215.54H669L679.61 199.7V223.8H685.51V190.2H679.22L669 206.09L658.78 190.2H652.49Z"/>
+      <!-- rótulo: R -->
+      <path fill="#5C001D" d="M655.97 303.8H661.87V292.09H669.26L677.52 303.8H684.53L675.46 291.08C680.11 289.74 683.42 286.42 683.42 280.9V280.81C683.42 277.88 682.42 275.43 680.64 273.56C678.48 271.45 675.17 270.2 670.94 270.2H655.97ZM661.87 286.86V275.58H670.46C674.88 275.58 677.42 277.5 677.42 281.14V281.24C677.42 284.7 674.74 286.86 670.51 286.86Z"/>
+      <!-- rótulo: D -->
+      <path fill="#5C001D" d="M654.55 383.8H667.08C677.64 383.8 684.94 376.46 684.94 367V366.9C684.94 357.45 677.64 350.2 667.08 350.2H654.55ZM667.08 355.58C674.14 355.58 678.74 360.42 678.74 367V367.1C678.74 373.67 674.14 378.42 667.08 378.42H660.46V355.58Z"/>
+    </g>
+  </g>
+</svg>

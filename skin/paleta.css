@@ -1,0 +1,75 @@
+/* =========================================================
+   Paleta · UNIS Virtual (Universidad del Istmo)
+   ---------------------------------------------------------
+   Guinda, rojo, azul y gris: los valores RGB del Manual de marca
+   UNIS, pág. 14, sin alterar (el manual lo prohíbe). El amarillo
+   vivo se midió del píxel en docs/Ejemplos portadas/ (el manual
+   no lo da). Origen de cada valor y contrastes: ../INSTITUCION.md §1.1.
+
+   Este archivo se carga ANTES de core.css: los tokens que core.css
+   también define se declaran con `html:root` (especificidad
+   0,1,1 > 0,1,0) para ganarle sin tocar el motor.
+   ========================================================= */
+
+/* --- Los 3 tokens que el motor lee vía var() --- */
+:root {
+  --c-acento: #840029;   /* Guinda institucional · acción: botones, enlaces, estado activo */
+  --c-info:   #005092;   /* Azul del isologotipo · lo informativo */
+  --c-deep:   #5C001D;   /* Guinda + 30 % negro (calculado) · menú lateral, portada, bandas */
+}
+
+html:root {
+  /* --- Marca (D18): guinda principal, amarillo de acento, azul de información,
+     rojo en las formas, gris neutro --- */
+  --c-guinda:   #840029;   /* Pantone 202 CP · RGB 132,0,41 (pág. 14) */
+  --c-rojo:     #D32E3F;   /* RGB 211,46,63 (pág. 14) */
+  --c-azul:     #005092;   /* RGB 0,80,146 (pág. 14) */
+  --c-gris:     #9F9D98;   /* RGB 159,157,152 (pág. 14) · solo gráfico: 2,71:1 sobre blanco */
+  --c-amarillo: #FCC146;   /* RGB 252,193,70, medido en «Ejemplo 01.png» · nunca texto sobre claro */
+
+  /* --- Estados (acierto, alerta, error): los del motor son claros para texto sobre superficie
+     clara; se oscurecen lo justo para 4,5:1 (UNIS-001 T3, criterio 7). No son colores de marca. --- */
+  --success: #19703F;   /* 4,5:1 o más también sobre su fondo de acierto (Relacionar: «✓ Correcta») */
+  --warning: #9A5B00;
+  --danger:  #B42234;
+
+  /* --- Tratamiento plano (INSTITUCION §1.4: formas planas, sin degradado ni brillo, UNIS-001 T3):
+     los tokens del motor que llevan degradado o halo de marca pasan a un color liso; la malla del
+     menú y las sombras, a la gama cálida de UNIS (el motor las trae en azul marino). --- */
+  --grad-brand: linear-gradient(var(--c-acento), var(--c-acento));
+  --glow-brand: 0 0 0 0 transparent;
+  --grad-mesh:  radial-gradient(at 20% 10%, color-mix(in srgb, var(--c-guinda) 16%, transparent) 0px, transparent 50%),
+                radial-gradient(at 80% 0%,  color-mix(in srgb, var(--c-amarillo) 18%, transparent) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, color-mix(in srgb, var(--c-rojo) 12%, transparent) 0px, transparent 50%);
+  --shadow-sm:  0 4px 12px rgba(43, 10, 20, .06);
+  --shadow-md:  0 12px 32px rgba(43, 10, 20, .10);
+  --shadow-lg:  0 24px 60px rgba(43, 10, 20, .16);
+
+  /* --- Tipografía: Gotham en títulos y texto (D9), servida desde assets/fonts/ --- */
+  --font-display: 'Gotham', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif:   var(--font-display);
+  --font-body:    'Gotham', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:    var(--font-body);
+}
+
+/* --- Superficies y texto: los mismos en las dos versiones del motor, «Oscura» (hibrida:
+   menú guinda hondo, contenido claro) y «Clara» (menú blanco). `html:root` (0,1,1) gana a
+   `:root, [data-version="hibrida"]` y a `[data-version="clara"]` de core.css (0,1,0). --- */
+html:root {
+  --bg-app:     #FAF7F5;
+  --bg-surface: #FFFFFF;
+  --bg-card:    #FFFFFF;
+  --bg-muted:   #F3EEEC;
+  --border-c:   #E8E1DE;
+  --text-head:  #2B0A14;   /* 17,03:1 sobre el fondo */
+  --text-pri:   #3A3437;   /* 11,40:1 */
+  --text-mut:   #6B6467;   /* 5,40:1 */
+}
+
+/* --- Versión «Clara» (menú blanco): el texto y el filete del menú, en la gama de UNIS (el motor los
+   trae en azul pizarra: #0F172A, #6B7280, #E5E7EB). Título 17,03:1 y texto atenuado 5,71:1 sobre blanco. --- */
+html:root[data-version="clara"] {
+  --sb-text:     #2B0A14;
+  --sb-text-mut: #6B6467;
+  --border-sb:   #E8E1DE;
+}

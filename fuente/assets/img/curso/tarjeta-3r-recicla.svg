@@ -1,0 +1,19 @@
+<!-- UNIS-001 T5: figura de ejemplo del catálogo en la familia de UNIS. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="Papel y cartón organizados junto al símbolo de reciclaje.">
+  <defs><clipPath id="tarjeta-3r-recicla-recorte"><circle cx="80" cy="80" r="80"/></clipPath></defs>
+  <g clip-path="url(#tarjeta-3r-recicla-recorte)">
+    <!-- fondo y key visual de la serie: disco guinda y base roja, iguales en las tres -->
+    <rect width="160" height="160" fill="#F3EEEC"/>
+    <circle cx="80" cy="80" r="64" fill="#840029"/>
+    <path d="M31.7 122H128.3A64 64 0 0 1 31.7 122Z" fill="#D32E3F"/>
+    <!-- el cartón (caja) y el papel (pila), organizados -->
+    <rect x="34" y="92" width="44" height="34" rx="4" fill="#9F9D98"/>
+    <rect x="52" y="92" width="8" height="14" fill="#E8E1DE"/>
+    <rect x="38" y="84" width="36" height="8" rx="2" fill="#FFFFFF"/>
+    <rect x="40" y="76" width="36" height="8" rx="2" fill="#E8E1DE"/>
+    <rect x="37" y="68" width="36" height="8" rx="2" fill="#FFFFFF"/>
+    <rect x="39" y="60" width="36" height="8" rx="2" fill="#E8E1DE"/>
+    <!-- el símbolo de reciclaje: el único amarillo -->
+    <path d="M113.6 59.3A21 21 0 0 1 130.7 76.4L135.2 75.6L129.1 87.3L119.3 78.4L123.8 77.6A14 14 0 0 0 112.4 66.2ZM126.1 93.5A21 21 0 0 1 102.8 99.7L101.3 104L94.1 92.9L106.8 88.9L105.2 93.2A14 14 0 0 0 120.7 89ZM90.3 87.2A21 21 0 0 1 96.5 63.9L93.6 60.4L106.8 59.8L103.9 72.8L101 69.3A14 14 0 0 0 96.8 84.8Z" fill="#FCC146"/>
+  </g>
+</svg>

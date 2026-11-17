@@ -1,0 +1,20 @@
+<!-- UNIS-001 T5: figura de ejemplo del catálogo en la familia de UNIS. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="Frasco de vidrio reutilizado como portalápices.">
+  <defs><clipPath id="tarjeta-3r-reutiliza-recorte"><circle cx="80" cy="80" r="80"/></clipPath></defs>
+  <g clip-path="url(#tarjeta-3r-reutiliza-recorte)">
+    <!-- fondo y key visual de la serie: disco guinda y base roja, iguales en las tres -->
+    <rect width="160" height="160" fill="#F3EEEC"/>
+    <circle cx="80" cy="80" r="64" fill="#840029"/>
+    <path d="M31.7 122H128.3A64 64 0 0 1 31.7 122Z" fill="#D32E3F"/>
+    <!-- los lápices: el del centro es el único amarillo -->
+    <g transform="rotate(-16 68 76)"><path d="M59.5 49H72.5V83H59.5ZM62.8 42.5L66 36L69.2 42.5Z" fill="#D32E3F"/><path d="M59.5 49L62.8 42.5H69.2L72.5 49Z" fill="#FFFFFF"/></g>
+    <g transform="rotate(16 92 76)"><path d="M87.5 49H100.5V83H87.5ZM90.8 42.5L94 36L97.2 42.5Z" fill="#9F9D98"/><path d="M87.5 49L90.8 42.5H97.2L100.5 49Z" fill="#FFFFFF"/></g>
+    <g><path d="M73 37H87V77H73ZM76.5 30.5L80 24L83.5 30.5Z" fill="#FCC146"/><path d="M73 37L76.5 30.5H83.5L87 37Z" fill="#FFFFFF"/></g>
+    <!-- el frasco de vidrio: cuello con rosca, cuerpo y brillo -->
+    <rect x="58" y="64" width="44" height="18" fill="#FFFFFF"/>
+    <rect x="55" y="64" width="50" height="5" rx="2.5" fill="#9F9D98"/>
+    <rect x="55" y="72" width="50" height="5" rx="2.5" fill="#9F9D98"/>
+    <path d="M50 92A12 12 0 0 1 62 80H98A12 12 0 0 1 110 92V116A10 10 0 0 1 100 126H60A10 10 0 0 1 50 116Z" fill="#FFFFFF"/>
+    <rect x="59" y="90" width="7" height="26" rx="3.5" fill="#E8E1DE"/>
+  </g>
+</svg>

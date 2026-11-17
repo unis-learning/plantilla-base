@@ -1,0 +1,37 @@
+<!-- UNIS-001 T3: pieza de ejemplo del catálogo («Descarga - con imagen»), dibujada en la familia gráfica
+     de UNIS (INSTITUCION §1.4): formas planas sin trazo de contorno, un disco amarillo y un semicírculo
+     rojo detrás, el documento con cabecera guinda y la burbuja de mensaje (el «elemento digital» del key
+     visual) con la flecha de descarga. Paleta de skin/paleta.css. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 340" role="img" aria-labelledby="t">
+  <title id="t">Una guía de estudio con una burbuja de descarga</title>
+  <!-- key visual detrás -->
+  <circle cx="226" cy="168" r="138" fill="#FCC146"/>
+  <path d="M40 316 a86 86 0 0 1 172 0 z" fill="#D32E3F"/>
+  <circle cx="356" cy="268" r="30" fill="none" stroke="#840029" stroke-width="10"/>
+  <!-- documento de atrás -->
+  <g transform="rotate(-7 250 170)">
+    <rect x="182" y="58" width="160" height="214" rx="8" fill="#F3EEEC"/>
+    <rect x="182" y="58" width="160" height="28" rx="8" fill="#9F9D98"/>
+    <rect x="182" y="74" width="160" height="12" fill="#9F9D98"/>
+  </g>
+  <!-- documento de adelante -->
+  <rect x="96" y="66" width="180" height="246" rx="8" fill="#FFFFFF"/>
+  <rect x="96" y="66" width="180" height="52" rx="8" fill="#840029"/>
+  <rect x="96" y="104" width="180" height="14" fill="#840029"/>
+  <circle cx="124" cy="92" r="11" fill="#FCC146"/>
+  <rect x="146" y="86" width="104" height="10" rx="5" fill="#FFFFFF" opacity=".9"/>
+  <rect x="118" y="140" width="136" height="9" rx="4.5" fill="#E8E1DE"/>
+  <rect x="118" y="160" width="118" height="9" rx="4.5" fill="#E8E1DE"/>
+  <rect x="118" y="180" width="128" height="9" rx="4.5" fill="#E8E1DE"/>
+  <!-- gráfico: tres barras planas -->
+  <rect x="118" y="244" width="20" height="44" rx="3" fill="#D32E3F"/>
+  <rect x="146" y="226" width="20" height="62" rx="3" fill="#840029"/>
+  <rect x="174" y="208" width="20" height="80" rx="3" fill="#5C001D"/>
+  <circle cx="232" cy="256" r="24" fill="#FCC146"/>
+  <path d="M232 256 L232 232 A24 24 0 0 1 255 262 Z" fill="#840029"/>
+  <!-- burbuja de mensaje con la descarga -->
+  <path d="M296 40 h84 a16 16 0 0 1 16 16 v60 a16 16 0 0 1 -16 16 h-44 l-18 20 v-20 h-22 a16 16 0 0 1 -16 -16 v-60 a16 16 0 0 1 16 -16 z" fill="#5C001D"/>
+  <path d="M338 60 v38 M322 84 l16 16 l16 -16 M318 112 h40" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="390" cy="44" r="13" fill="#FCC146"/>
+  <path d="M385 47 a5 5 0 0 1 10 0 v1 h2 v2 h-14 v-2 h2 z M388 52 a2 2 0 0 0 4 0 z" fill="#5C001D"/>
+</svg>

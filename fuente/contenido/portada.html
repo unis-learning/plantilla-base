@@ -1,0 +1,176 @@
+<style>
+  /* =========================================================
+     PORTADA · UNIS Virtual · Plantilla base (UNIS-001 D5: la guinda de los ejemplos del cliente)
+     Como «Ejemplo 01»: a la izquierda, sobre la guinda, el logo, el eyebrow con su filete amarillo,
+     el título en dos líneas tal como se escribe (la primera blanca, la segunda amarilla), un filete,
+     el subtítulo y el botón amarillo «Ver el contenido». Sin frase destacada (ajuste del arquitecto
+     en la muestra, 2026-11-16). A la derecha, la foto a todo el alto, sin marco y sin recorte: la
+     vista «foto», la que eligió el arquitecto entre las tres de la muestra (2026-11-17, UNIS-001 T9);
+     las vistas «silueteada» y «fundida» salieron con sus fotos (familia gráfica, INSTITUCION §1.4 y §2).
+     Foto: Vitaly Gariev, Unsplash (Unsplash License), unsplash.com/photos/cSet5uK_PRA
+     (INSTITUCION §2). Recorte cuadrado alrededor de la persona, WebP de 1600 px con
+     scripts/optimizar-figuras.py; la foto y el recorte originales, en insumos/.
+     El CSS de portada viaja por curso, como en las otras instituciones de la RED.
+     ========================================================= */
+  .un-portada{
+    position:relative; overflow:hidden; isolation:isolate;
+    min-height:100vh; min-height:100dvh;
+    display:grid; grid-template-columns:minmax(0, 46fr) minmax(0, 54fr); align-items:center;
+    color:#fff;
+    background:
+      radial-gradient(circle at 34% -18%, rgba(255,255,255,.045) 0 31vw, transparent calc(31vw + 1px)),
+      radial-gradient(circle at -6% 104%, rgba(0,0,0,.20) 0 24vw, transparent calc(24vw + 1px)),
+      linear-gradient(120deg, var(--c-deep) 0%, var(--c-guinda) 100%);
+    background-color:var(--c-deep);   /* el color de fondo que leen las medidas de contraste */
+  }
+  .un-portada__texto{
+    position:relative; z-index:2;
+    padding:clamp(24px, 5vh, 72px) 12px clamp(24px, 5vh, 72px) clamp(28px, 4.7vw, 80px);
+  }
+  .un-portada__logo img{ height:clamp(58px, 10vh, 92px); width:auto; display:block; margin-bottom:clamp(28px, 8vh, 84px); }
+  .un-portada__eyebrow{
+    display:flex; align-items:center; gap:18px;
+    margin-bottom:clamp(14px, 2.6vh, 24px);
+    font-weight:500; font-size:clamp(.85rem, 1.3vw, 1.2rem); letter-spacing:.24em; text-transform:uppercase;
+    color:var(--c-amarillo);
+  }
+  .un-portada__eyebrow::before{ content:''; width:44px; height:3px; border-radius:2px; background:var(--c-amarillo); }
+  .un-portada__title{
+    margin:0; width:fit-content; max-width:100%; padding-bottom:clamp(16px, 3vh, 28px);
+    border-bottom:1px solid color-mix(in srgb, var(--c-amarillo) 55%, transparent);
+    color:#fff; font-weight:700; letter-spacing:-.01em;
+    font-size:min(clamp(2.3rem, 4vw, 4.2rem), 9.6vh); line-height:1.1;
+  }
+  .un-portada__destacado{ display:block; color:var(--c-amarillo); }
+  .un-portada__sub{
+    margin:clamp(18px, 3.4vh, 34px) 0 clamp(26px, 5.4vh, 52px); max-width:22em;
+    font-size:clamp(1.15rem, 2vw, 1.9rem); line-height:1.3; color:#fff;
+  }
+  .un-portada__cta{
+    display:inline-flex; align-items:center; gap:14px;
+    padding:clamp(14px, 2.2vh, 20px) clamp(28px, 2.6vw, 40px); border-radius:8px;
+    background:var(--c-amarillo); color:var(--c-deep); text-decoration:none;
+    font-weight:700; font-size:clamp(1rem, 1.4vw, 1.25rem);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .un-portada__cta:hover, .un-portada__cta:focus-visible{
+    color:var(--c-deep); transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.28);
+  }
+  .un-portada__cta:focus-visible{ outline:3px solid #fff; outline-offset:3px; }
+
+  /* La foto y sus formas. La caja (.un-portada__visual) es la mitad derecha de la portada, a todo
+     el alto. La foto va suelta, sin recorte; las formas solo dibujan su borde izquierdo y dos
+     esquinas, sin tocar a la persona.
+     La foto se pone «a cubrir» en un lienzo (.un-portada__lienzo) que es su rectángulo exacto. Las
+     formas del borde se miden desde la caja, en --u (una centésima de su alto). Por foto se ajustan:
+     --ratio (ancho ÷ alto de la foto), --px y --py (qué parte se ve cuando sobra foto: 0 = izquierda
+     o arriba, 1 = derecha o abajo). */
+  .un-portada__visual{ --u:1vh; position:relative; z-index:1; align-self:stretch; min-height:100%; }
+  .un-portada__visual > *{ position:absolute; display:block; }
+  .un-portada__marco{ inset:0; overflow:hidden; container-type:size; background:color-mix(in srgb, #fff 10%, var(--c-deep)); }
+  .un-portada__marco > *, .un-portada__lienzo > *{ position:absolute; display:block; }
+  .un-portada__lienzo{
+    --ratio:1; --px:0; --py:.12;
+    --w:max(100cqw, calc(100cqh * var(--ratio))); --h:calc(var(--w) / var(--ratio)); --i:calc(var(--h) / 100);
+    width:var(--w); height:var(--h);
+    /* la caja nunca esconde más del 12 % izquierdo de la foto */
+    left:max(calc((100cqw - var(--w)) * var(--px)), calc(var(--w) * -.12)); top:calc((100cqh - var(--h)) * var(--py));
+  }
+  .un-portada__lienzo img{ inset:0; width:100%; height:100%; object-fit:cover; }
+  .un-portada__asoma, .un-portada__arco, .un-portada__aro, .un-portada__anillo{ border-radius:50%; aspect-ratio:1; }
+
+  /* el borde izquierdo de la foto: dos arcos guinda, con aire entre el arco bajo y la persona */
+  .un-portada__arco--alto{ width:calc(var(--u) * 100); left:calc(var(--u) * -88); top:calc(var(--u) * -20); background:var(--c-guinda); }
+  .un-portada__arco--bajo{ width:calc(var(--u) * 90); left:calc(var(--u) * -80); top:calc(var(--u) * 48); background:var(--c-deep); }
+  /* un disco amarillo y uno rojo asoman entre los arcos */
+  .un-portada__asoma--amarillo{ width:calc(var(--u) * 40); left:calc(var(--u) * -18); top:calc(var(--u) * -10); background:var(--c-amarillo); }
+  .un-portada__asoma--rojo{ width:calc(var(--u) * 30); left:calc(var(--u) * -18); top:calc(var(--u) * 51); background:var(--c-rojo); }
+  .un-portada__aro{ width:calc(var(--u) * 14); left:calc(var(--u) * -3); top:calc(var(--u) * 60); border:calc(var(--u) * 1.2) solid var(--c-deep); }
+  .un-portada__anillo{ width:calc(var(--u) * 12); right:calc(var(--u) * 3); top:calc(var(--u) * 6); border:calc(var(--u) * 1.4) solid var(--c-amarillo); }
+  .un-portada__bloque{ width:calc(var(--u) * 5); height:calc(var(--u) * 30); right:0; bottom:calc(var(--u) * 18); background:var(--c-rojo); }
+  /* el bloque no va si la caja es más angosta que la foto */
+  @container (max-aspect-ratio: 95/100){ .un-portada__bloque{ display:none; } }
+
+  /* en una pantalla casi cuadrada la caja de la foto se estrecha: el anillo y el bloque del borde
+     derecho no van */
+  @media (min-width: 901px) and (min-aspect-ratio: 1001/1000) and (max-aspect-ratio: 155/100){
+    .un-portada__marco > :is(.un-portada__anillo, .un-portada__bloque){ display:none; }
+  }
+  @media (prefers-reduced-motion: reduce){ .un-portada__cta{ transition:none; } }
+
+  /* Celular, tableta y toda pantalla más alta que ancha: la foto arriba, a todo el ancho, y el
+     texto debajo. El alto de la foto es lo que deja el texto, para que «Ver el contenido» entre en
+     la primera vista. */
+  @media (max-width: 900px), (max-aspect-ratio: 1/1){
+    .un-portada{ grid-template-columns:minmax(0, 1fr); align-content:start; }
+    .un-portada__visual{
+      --alto:clamp(150px, calc(100svh - 372px), 50svh); --u:calc(var(--alto) / 100);
+      order:-1; min-height:0; height:var(--alto);
+    }
+    /* el borde inferior de la foto, en curva */
+    .un-portada__marco{ clip-path:ellipse(130% 100% at 60% 0); }
+    .un-portada__texto{ padding:22px 24px 28px; }
+    .un-portada__logo img{ height:42px; margin-bottom:18px; }
+    .un-portada__eyebrow{ margin-bottom:10px; gap:14px; }
+    .un-portada__eyebrow::before{ width:32px; }
+    .un-portada__title{ font-size:clamp(1.9rem, 8.4vw, 2.8rem); padding-bottom:12px; }
+    .un-portada__sub{ margin:14px 0 20px; font-size:clamp(1.1rem, 4.6vw, 1.4rem); }
+  }
+  /* tableta en vertical: el texto un paso más grande y la foto un poco más alta */
+  @media (min-width: 700px) and (max-aspect-ratio: 1/1){
+    .un-portada__visual{ --alto:clamp(150px, calc(100svh - 490px), 56svh); }
+    .un-portada__texto{ padding:32px 48px 40px; }
+    .un-portada__logo img{ height:56px; margin-bottom:24px; }
+    .un-portada__title{ font-size:3.4rem; }
+    .un-portada__sub{ font-size:1.6rem; }
+  }
+  /* celular acostado: lado a lado, como en escritorio, con el texto compacto */
+  @media (max-width: 900px) and (min-aspect-ratio: 16/10) and (max-height: 480px){
+    .un-portada{ grid-template-columns:minmax(0, 46fr) minmax(0, 54fr); align-content:normal; }
+    .un-portada__visual{ --u:1vh; order:0; height:auto; min-height:100%; }
+    .un-portada__marco{ clip-path:none; }
+    .un-portada__texto{ padding:14px 12px 14px 24px; }
+    .un-portada__logo img{ height:34px; margin-bottom:12px; }
+    .un-portada__title{ font-size:min(1.9rem, 3.7vw); padding-bottom:8px; }
+    .un-portada__sub{ margin:10px 0 14px; font-size:1rem; }
+    .un-portada__cta{ padding:10px 20px; }
+  }
+</style>
+
+<section class="un-portada">
+  <div class="un-portada__texto">
+    <div class="un-portada__logo">
+      <img src="assets/img/logos/un-logo-blanco.svg" alt="UNIS Virtual" />
+    </div>
+
+    <div class="un-portada__eyebrow">Unidad 1</div>
+
+    <!-- Plantilla: el título literal del Word, tal como se escribe, en dos líneas: la primera en
+         blanco; la segunda, en amarillo, dentro de .un-portada__destacado (INSTITUCION §2). -->
+    <h1 class="un-portada__title" lang="es">
+      Catálogo <span class="un-portada__destacado">de componentes</span>
+    </h1>
+
+    <p class="un-portada__sub">Plantilla base del recurso educativo</p>
+
+    <a class="un-portada__cta" href="temario.html">
+      Ver el contenido
+      <iconify-icon icon="mdi:arrow-right"></iconify-icon>
+    </a>
+  </div>
+
+  <div class="un-portada__visual">
+    <div class="un-portada__marco">
+      <div class="un-portada__lienzo">
+        <img src="assets/img/curso/portada-persona.webp" alt="Una estudiante de lentes, cabello rizado y camisa celeste con lunares blancos sonríe de frente, delante de un muro de ladrillo." />
+      </div>
+      <span class="un-portada__asoma un-portada__asoma--amarillo" aria-hidden="true"></span>
+      <span class="un-portada__asoma un-portada__asoma--rojo" aria-hidden="true"></span>
+      <span class="un-portada__anillo" aria-hidden="true"></span>
+      <span class="un-portada__bloque" aria-hidden="true"></span>
+    </div>
+    <span class="un-portada__arco un-portada__arco--alto" aria-hidden="true"></span>
+    <span class="un-portada__arco un-portada__arco--bajo" aria-hidden="true"></span>
+    <span class="un-portada__aro" aria-hidden="true"></span>
+  </div>
+</section>

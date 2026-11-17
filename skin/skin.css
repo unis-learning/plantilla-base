@@ -1,0 +1,528 @@
+/* =========================================================
+   Capa de marca · UNIS Virtual (Universidad del Istmo)
+   ---------------------------------------------------------
+   Se carga DESPUÉS de core.css y del catálogo. Solo ajusta lo que
+   distingue a UNIS; el motor no se toca. Guía: ../INSTITUCION.md
+   Piel escrita limpia (UNIS-001, D7): cada regla la usa la semilla,
+   el catálogo de la institución o un curso. Prefijo propio: un-.
+   ========================================================= */
+
+/* --- Gotham, servida desde el curso (D9) -----------------------------------
+   Los archivos que entregó UNIS viajan en fuente/assets/fonts/ (la semilla
+   los siembra). Sin local(): el curso se lee igual en cualquier equipo y sin
+   red. Pesos: 400 (Book) y su cursiva, 500 (Medium) y 700 (Bold); un 600
+   pedido por el motor cae al 700. */
+@font-face { font-family: 'Gotham'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/Gotham-Book.otf') format('opentype'); }
+@font-face { font-family: 'Gotham'; font-weight: 400; font-style: italic; font-display: swap; src: url('../fonts/Gotham-BookItalic.otf') format('opentype'); }
+@font-face { font-family: 'Gotham'; font-weight: 500; font-style: normal; font-display: swap; src: url('../fonts/Gotham-Medium.otf') format('opentype'); }
+@font-face { font-family: 'Gotham'; font-weight: 700; font-style: normal; font-display: swap; src: url('../fonts/Gotham-Bold.otf') format('opentype'); }
+
+body { font-family: var(--font-body); }
+h1, h2, h3, h4, .ova-screen__title { font-family: var(--font-display); }
+
+/* --- Logo (D17): el aprobado «UNIS Virtual», sin la caja blanca que el motor
+   pone a los logos a color. Blanco sobre el guinda del menú; en la versión
+   clara el menú es blanco y entra el guinda. En móvil, el mismo logo completo. */
+.ova-brand-logo--desktop { background: none; padding: 0; max-width: 180px; }
+.ova-brand-logo--mobile  { background: none; padding: 0; }
+[data-version="clara"] .ova-brand-logo { content: url('../img/logos/un-logo-guinda.svg'); }
+
+/* --- Navegación entre pantallas ---------------------------------------------
+   El motor pinta «Siguiente» con --c-acento sobre el fondo del menú: guinda sobre
+   guinda hondo, la palabra desaparece. Va en amarillo (8,73:1 sobre el guinda hondo);
+   en la versión clara el botón es blanco y vuelve el guinda (10,43:1). En celular las
+   dos columnas encogen (con Gotham, el botón se salía 31 px a 390 px) y la flecha pasa
+   encima del texto: al lado, «Introducción» se partía dentro de la palabra (UNIS-001 T3). */
+.ova-screen-nav__btn--next small { color: var(--c-amarillo); }
+[data-version="clara"] .ova-screen-nav__btn--next small { color: var(--c-guinda); }
+@media (max-width: 600px) {
+  .ova-screen-nav { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+  .ova-screen-nav__btn { min-width: 0; gap: 10px; padding: 14px; }
+  .ova-screen-nav__btn > :not(.ico) { min-width: 0; overflow-wrap: break-word; }
+  .ova-screen-nav__btn--prev { flex-direction: column; align-items: flex-start; }
+  .ova-screen-nav__btn--next { flex-direction: column-reverse; align-items: flex-end; }
+  .ova-screen-nav__btn .ico { width: 34px; height: 34px; }
+}
+
+/* =========================================================
+   MARCO DE PANTALLA · las clases de catalogo.json → marco, que usan la
+   semilla y la plantilla-base: sección, título, subtítulos, bloque y la
+   descripción del «cuándo usarlo».
+   ========================================================= */
+.un-seccion {
+  margin: 72px 0 32px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border-c);
+  scroll-margin-top: calc(var(--topbar-h) + 18px);
+}
+.un-seccion--variante { border-top-color: var(--c-guinda); }
+.un-seccion__titulo {
+  margin: 0 0 10px;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.6vw, 2.05rem);
+  line-height: 1.15;
+  color: var(--text-head);
+}
+.un-titulo--variante { margin-top: 56px; }
+.un-seccion__titulo + .un-bloque,
+.un-seccion__titulo + .un-cat-desc,
+.un-seccion__titulo + :is(.ova-figura, .ova-foto-ancha, .ova-ilustracion, .ova-episodio, .ova-pendiente, .ova-ventana, .ova-cifra, .ova-indicador, .ova-callout, .ova-eval-intro, .ova-etiqueta) { margin-top: 28px; }
+
+.un-bloque > :first-child { margin-top: 0; }
+.un-bloque > :last-child { margin-bottom: 0; }
+.un-bloque + .un-bloque { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border-c); }
+
+.un-sub { color: var(--text-head); line-height: 1.25; }
+.un-sub--1 { font-weight: 700; font-size: clamp(1.3rem, 2.1vw, 1.55rem); margin: 44px 0 18px; }
+.un-sub--2 { font-weight: 700; font-size: 1.22rem; margin: 34px 0 14px; }
+.un-sub--3 { font-weight: 500; font-size: 1.06rem; margin: 26px 0 12px; }
+.un-sub--4 {
+  font-weight: 500; font-size: .8rem; margin: 22px 0 10px;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--c-guinda);
+}
+.un-sub + * { margin-top: 0; }
+.un-sub__nota { font-weight: 400; font-size: .74em; letter-spacing: 0; text-transform: none; color: var(--text-mut); }
+.un-cat-desc { margin: 0 0 22px; max-width: 72ch; color: var(--text-mut); font-size: .98rem; line-height: 1.6; }
+
+/* --- Contenido de la unidad: la lista que el motor escribe en {{TEMARIO}} (un .ova-bloque por
+   tema, con sus secciones como filas que llevan a cada una). El motor no la viste. Tarjeta
+   blanca plana con el filo amarillo; el título del tema en guinda, tal como se escribe; las
+   secciones en dos columnas cuando hay ancho; la flecha de cada fila aparece al pasar. --- */
+.un-temario { display: flex; flex-direction: column; gap: 14px; margin: 36px 0 0; }
+.ova-bloque {
+  padding: 22px 26px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-c);
+  border-left: 6px solid var(--c-amarillo);
+  border-radius: 14px;
+}
+.ova-bloque__tag {
+  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 10px;
+  font-weight: 700; font-size: 1.08rem; line-height: 1.3; color: var(--c-guinda); text-decoration: none;
+}
+.ova-bloque__tag iconify-icon { font-size: 1.15rem; }
+.ova-bloque ol { margin: 0; padding: 0; list-style: none; column-gap: 32px; }
+.ova-bloque li { break-inside: avoid; font-size: .95rem; }
+.ova-fila {
+  display: flex; align-items: baseline; gap: 10px;
+  margin-left: -8px; padding: 6px 10px 6px 8px;
+  border-radius: 8px; color: var(--text-pri); text-decoration: none;
+}
+.ova-bloque li.sub .t { position: relative; padding-left: 19px; }
+.ova-bloque li.sub .t::before {
+  content: ''; position: absolute; left: 0; top: .52em; width: 7px; height: 7px;
+  border-radius: 50%; background: var(--c-rojo);
+}
+.ova-bloque li .n--icono { color: var(--c-guinda); }
+.ova-bloque li .n--icono iconify-icon { font-size: 1.1rem; vertical-align: -.18em; }
+.ova-fila__ir { margin-left: auto; color: var(--c-guinda); opacity: 0; transition: opacity .16s ease; }
+.ova-bloque__tag .ova-fila__ir { margin-left: 2px; }
+.ova-fila:is(:hover, :focus-visible) { background: color-mix(in srgb, var(--c-guinda) 7%, transparent); color: var(--text-head); }
+:is(.ova-fila, a.ova-bloque__tag):is(:hover, :focus-visible) .ova-fila__ir { opacity: 1; }
+:is(.ova-fila, a.ova-bloque__tag):focus-visible { outline: 2px solid var(--c-guinda); outline-offset: 2px; border-radius: 8px; }
+@media (hover: none) { .ova-fila__ir { opacity: .5; } }
+@media (min-width: 900px) { .ova-bloque ol { column-count: 2; } }
+
+/* --- Referencias (semilla y plantilla-base): una por párrafo, con sangría francesa (APA);
+   una URL larga parte donde haga falta. --- */
+.un-referencias p { margin: 0 0 14px; padding-left: 2em; text-indent: -2em; overflow-wrap: anywhere; }
+
+/* --- Créditos: la pantalla que cierra la unidad, después de Referencias (semilla y
+   plantilla-base; UNIS-001 T6). Cargo y persona en una rejilla, cada cargo con el filete
+   amarillo; el pie con el © y la versión. Sin bloque de fotografías, como en las otras
+   plantillas-base de la RED (post-auditoría UNIS-001, 2026-11-17).
+   El cargo va como lo escribe el Word: sin mayúsculas forzadas. --- */
+.un-creditos {
+  padding: clamp(24px, 4vw, 40px);
+  background: var(--bg-muted);
+  border-top: 6px solid var(--c-guinda);
+  border-radius: 0 0 14px 14px;
+}
+.un-creditos__unidad { margin: 0 0 24px; font-weight: 700; font-size: 1.15rem; line-height: 1.3; color: var(--text-head); }
+.un-creditos__roles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px 28px; margin: 0; }
+.un-creditos__rol { padding-left: 14px; border-left: 3px solid var(--c-amarillo); }
+.un-creditos__rol dt { margin: 0 0 4px; font-family: var(--font-body); font-size: .88rem; font-weight: 500; line-height: 1.5; color: var(--c-guinda); }
+.un-creditos__rol dd { margin: 0; color: var(--text-head); }
+.un-creditos__pie {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px;
+  margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border-c);
+  font-size: .88rem; color: var(--text-mut);
+}
+
+
+/* --- Menú lateral (criterio 7): la etiqueta de la unidad y el número de un tema ya visitado
+   en amarillo sobre el guinda hondo (el motor da 4,31:1 y, con el verde de acierto, 2,67:1);
+   en la versión «Clara», el número visitado en guinda (10,4:1). --- */
+.ova-sidebar__course-tag { color: var(--c-amarillo); }
+[data-version="clara"] .ova-sidebar__course-tag { color: var(--c-guinda); }
+.ova-sidebar__menu-item.is-done .num {
+  color: var(--c-amarillo);
+  background: color-mix(in srgb, var(--c-amarillo) 14%, transparent);
+  border-color: color-mix(in srgb, var(--c-amarillo) 40%, transparent);
+}
+/* Una sección sin número (las de la Introducción, que es estructural y no se numera): el motor
+   le deja la columna angosta del número y el título se partía palabra por palabra. Ocupa la fila,
+   alineada con el título de «Introducción». */
+.ova-sidebar__menu-item[data-tipo="seccion"]:not(:has(.num)) { grid-template-columns: 1fr; padding-left: 29px; }
+/* Las secciones del menú (nivel 2): el motor atenúa el nombre (opacidad .82) y su número (.6) y, sobre
+   el color del menú, quedaban en 3,66:1 y 2,50:1 («Clara»: 3,88:1 y 2,52:1). Sin atenuar dan 4,89:1
+   («Clara»: 5,76:1); la jerarquía la siguen dando la sangría, el filete y el tamaño (UNIS-001 T8,
+   criterio 7). */
+.ova-sidebar__menu-item[data-nivel="2"] .title,
+.ova-sidebar__menu-item .num--sub { opacity: 1; }
+/* El elemento activo: el motor pinta su icono en guinda sobre el cuadro guinda (no se veía);
+   el cuadro va en amarillo con el número o el icono en guinda hondo (8,73:1), en las dos versiones. */
+.ova-sidebar__menu-item.is-active .num,
+[data-version="clara"] .ova-sidebar__menu-item.is-active.is-done .num {
+  background: var(--c-amarillo);
+  color: var(--c-deep);
+  border-color: transparent;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--c-amarillo) 35%, transparent);
+}
+.ova-sidebar__menu-item.is-active iconify-icon { color: var(--c-deep); }
+[data-version="clara"] .ova-sidebar__menu-item.is-done .num {
+  color: var(--c-guinda);
+  background: color-mix(in srgb, var(--c-guinda) 8%, transparent);
+  border-color: color-mix(in srgb, var(--c-guinda) 30%, transparent);
+}
+
+/* --- «Siguiente»: la flecha en un círculo amarillo (la cuadrícula de guinda sobre guinda
+   hondo no se veía). Eyebrow de pantalla: el filete amarillo de las portadas de ejemplo. --- */
+.ova-screen-nav__btn--next .ico { background: var(--c-amarillo); color: var(--c-deep); border-radius: 50%; }
+.ova-screen__eyebrow::before { height: 3px; background: var(--c-amarillo); }
+
+/* =========================================================
+   TÍTULOS DE PANTALLA · .un-suave y .un-destacado (catalogo.json → temas)
+   El remate va en guinda sobre un bloque amarillo plano, como la segunda
+   línea amarilla de las portadas; lo que acompaña, sin peso.
+   ========================================================= */
+.un-suave { font-weight: 400; color: var(--text-mut); }
+.un-destacado {
+  color: var(--c-guinda);
+  background: linear-gradient(transparent 62%, color-mix(in srgb, var(--c-amarillo) 75%, transparent) 62% 92%, transparent 92%);
+  padding: 0 .06em;
+}
+
+/* =========================================================
+   CATÁLOGO · TEXTO Y ÉNFASIS (familia «texto», UNIS-001 T3)
+   La estructura de cada pieza vive en motor/catalogo/catalogo.css; aquí,
+   las variables que la vuelven de UNIS y la forma del key visual: viñetas
+   redondas, el semicírculo amarillo de la cita, los círculos y el anillo del banner.
+   ========================================================= */
+html {
+  --ova-subtitulo-vineta-1: var(--c-guinda);
+  --ova-subtitulo-vineta-2: var(--c-rojo);
+  --ova-vineta-cuadro: var(--c-rojo);
+  --ova-destacado-filo: var(--c-amarillo);
+  --ova-destacado-suave: #FDF4E1;
+  --ova-descargable-fondo: var(--bg-muted);
+  --ova-descargable-filo: var(--c-amarillo);
+  --ova-descargable-imagen-fondo: #FDF1D6;
+  --ova-eval-intro-fondo: #FDF1D6;
+  --ova-cita-claro: #F6E9EC;
+  --ova-banner-claro: #FDF1D6;
+  --ova-codigo-resalte: var(--c-amarillo);
+  /* Las cadenas del código: el ámbar del catálogo (#B8650F) da 3,72:1 sobre --bg-muted; este da 5,41:1,
+     y 5,10:1 sobre una línea resaltada (UNIS-001 T8, criterio 7). No es color de marca. */
+  --ova-codigo-cadena: #8F5200;
+  --ova-tono-importante: var(--c-guinda);
+  --ova-tono-reflexion: var(--c-azul);
+  --ova-oscuro-icono: var(--c-amarillo);
+  --ova-oscuro-tinta: var(--c-deep);
+  --ova-cita-luz: var(--c-amarillo);
+  --ova-cita-bloque: var(--c-amarillo);
+  --ova-banner-realce: var(--c-amarillo);
+}
+
+/* Subtítulos con viñeta: círculos, la forma del key visual */
+.ova-subtitulo--vineta.ova-subtitulo--1::before,
+.ova-subtitulo--vineta.ova-subtitulo--2::before { border-radius: 50%; }
+
+/* Bloque destacado sin icono: el filo amarillo y el título en guinda. En ≤ 720 px el catálogo
+   vuelve a la rejilla de icono + texto (36 px) y el texto caía en la columna del icono: sin
+   icono, una sola columna a todo ancho. */
+.ova-destacado--sin-icono { border-left-width: 6px; }
+.ova-destacado.ova-destacado--sin-icono { grid-template-columns: minmax(0, 1fr); }
+
+/* Llamado a la acción → su pieza: 22 px también dentro de un bloque o de una sección de la
+   plantilla (el catálogo solo los da en la pantalla y en la evaluación). */
+:is(.un-bloque, .un-seccion) > .ova-llamado + * { margin-top: 22px; }
+
+/* Lista numerada con icono y Listado de pasos con tarjetas: el numeral, texto grande, a 3:1 o más
+   (el catálogo lo deja al 46 %). */
+:is(.ova-numerada__num, .ova-escena__num) { color: color-mix(in srgb, var(--c-acento) 72%, transparent); }
+/* Iconos de los campos en guinda (el motor los pinta con el azul de información) */
+.ova-campo__icono { color: var(--c-guinda); }
+
+/* Citas: las cajas de la tipo 1 y la 2 con el radio de las demás piezas (14 px) y la foto del autor
+   sin sombra (formas planas, §1.4). La comilla de la tipo 1 sale por encima de la caja; bajo un
+   subtítulo deja ese aire.
+   El fondo neutro, cálido como las superficies de UNIS. En la tipo 3, el bloque de color del
+   catálogo es un semicírculo amarillo apoyado en la base, a la derecha de la frase. */
+.un-sub + .ova-cita--tipo1 { margin-top: 44px; }
+/* La oscura: la comilla amarilla de apertura dentro de la caja (afuera quedaba amarillo sobre el fondo
+   claro de la página; UNIS-001 T8, N8). La caja abre más arriba para dejarle su lugar. */
+.ova-cita--tipo1.ova-cita--oscura { padding-top: 76px; }
+.ova-cita--tipo1.ova-cita--oscura::before { top: 14px; left: 24px; font-size: 4.5rem; }
+.un-sub + .ova-cita--tipo1.ova-cita--oscura { margin-top: 28px; }
+@media (max-width: 720px) {
+  .ova-cita--tipo1.ova-cita--oscura { padding-top: 62px; }
+  .ova-cita--tipo1.ova-cita--oscura::before { top: 10px; left: 14px; font-size: 3.6rem; }
+}
+.ova-cita--neutra { --ova-cita-fondo: var(--bg-muted); }
+.ova-cita--tipo1, .ova-cita--tipo2 { border-radius: 14px; }
+.ova-cita__foto { box-shadow: none; }
+.ova-cita--tipo3::after {
+  width: clamp(96px, 14vw, 190px); height: auto; aspect-ratio: 2 / 1; border-radius: 999px 999px 0 0;
+  right: 4%; bottom: 0;
+}
+
+/* Banner oscuro: el key visual en el borde derecho, lejos de la frase (círculo guinda,
+   semicírculo rojo y anillo amarillo); el claro, plano. */
+.ova-banner:not(.ova-banner--claro) {
+  background:
+    radial-gradient(circle at 100% 0, var(--c-guinda) 0 150px, transparent 151px),
+    radial-gradient(circle at 92% 100%, var(--c-rojo) 0 70px, transparent 71px),
+    radial-gradient(circle at calc(100% - 64px) 54%, transparent 0 21px, var(--c-amarillo) 22px 28px, transparent 29px),
+    var(--c-deep);
+}
+/* El banner deja a su ventana «Cómo va en el Word» los 18 px de las demás piezas; en celular sale
+   a sangre y va sin radio. */
+.ova-banner:has(+ .ova-catalogo__acciones) { margin-bottom: 0; }
+@media (max-width: 720px) {
+  .ova-banner { border-radius: 0; }
+  .ova-banner:not(.ova-banner--claro) {
+    background: radial-gradient(circle at 100% 0, var(--c-guinda) 0 60px, transparent 61px), var(--c-deep);
+  }
+}
+
+/* Botones: un solo tratamiento, plano (sin degradado ni halo: `paleta.css` deja --grad-brand liso y
+   --glow-brand vacío) y una sola forma, el rectángulo de radio 8 px del botón de las portadas de
+   ejemplo, en la portada, los botones del catálogo y los de la evaluación. */
+:is(.ova-btn, .ova-evalquiz__btn, .ova-empar__comprobar) { border-radius: 8px; }
+
+/* Velo de las ventanas («Cómo va en el Word», «Respuestas correctas» de Relacionar): el motor lo trae
+   en azul marino fijo; aquí, el guinda casi negro de los títulos al 70 %. */
+.ova-modal { background: rgba(43, 10, 20, .7); }
+
+/* Indicio de interacción (catalogo.js pone .is-indicio): el control que invita late dos veces. En una
+   descarga, su botón; en un acordeón, el segundo ítem; en unas pestañas, la segunda; en un carrusel,
+   «siguiente» (T4); en unos puntos interactivos, el primero; en un antes y después, el control (T5). */
+.is-indicio:not(.ova-llamado) .ova-btn,
+.ova-acordeon.is-indicio .ova-acordeon__item:nth-child(2) .ova-acordeon__head,
+.ova-tabs.is-indicio .ova-tabs__btn:nth-child(2),
+.ova-carrusel.is-indicio [data-ova-carrusel-next],
+.ova-hotspots.is-indicio .ova-hotspot:first-of-type .ova-hotspot__dot,
+.ova-beforeafter.is-indicio .ova-beforeafter__handle::after { animation: un-halo 1.1s ease-out .6s 2; }
+@keyframes un-halo {
+  from { box-shadow: 0 0 0 0 color-mix(in srgb, var(--c-amarillo) 80%, transparent); }
+  to   { box-shadow: 0 0 0 14px transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-indicio :is(.ova-btn, .ova-acordeon__head, .ova-tabs__btn, [data-ova-carrusel-next], .ova-hotspot__dot),
+  .is-indicio .ova-beforeafter__handle::after { animation: none !important; }
+  .ova-hotspot__pulse { animation: none; opacity: 0; }
+}
+
+/* =========================================================
+   CATÁLOGO · MEDIOS, INTERACTIVOS Y PASOS (familias «medios», «interactivos»
+   y «pasos», UNIS-001 T4)
+   El catálogo pinta con el azul de información el hilo, los puntos y el número
+   activo de las piezas de pasos, y trae degradados y sombras de color en la
+   portada del pódcast, los ejes, las fotos y los discos. Aquí todo va plano
+   (§1.4): el hilo en rojo (la forma que acompaña), los controles en guinda y
+   un solo acento amarillo por pieza (el paso abierto, la meta, el disco).
+   ========================================================= */
+/* Pódcast: la portada por defecto en guinda hondo liso y el botón de reproducir en guinda dentro
+   de un anillo amarillo. */
+.ova-episodio { --ova-episodio-portada: var(--c-deep); --ova-episodio-aro: var(--c-amarillo); }
+.ova-episodio .ova-episodio__control[data-plyr="play"] { background: var(--c-guinda) !important; }
+.ova-episodio .ova-episodio__control[data-plyr="play"]:hover { background: var(--c-deep) !important; }
+/* Foco de teclado: en guinda, como el de los demás controles (el catálogo lo trae en azul en el pódcast
+   y en la galería, y en el color del hilo en la línea de tiempo tipo 3). */
+.ova-episodio .ova-episodio__control:focus-visible, .ova-episodio .ova-episodio__velocidad:focus-visible,
+.ova-galeria__btn:focus-visible { outline-color: var(--c-guinda); }
+/* Carrusel de fotos: el velo oscuro sube hasta el rótulo «Escena N». El del catálogo se aclara de abajo
+   arriba y el rótulo, en lo alto del pie, quedaba sobre la foto casi sin velo (UNIS-001 T8, N3). */
+html { --ova-galeria-velo: linear-gradient(to top, rgba(0, 0, 0, .78) 0%, rgba(0, 0, 0, .62) 72%, rgba(0, 0, 0, 0) 100%); }
+
+/* Slide: el retrato delante de un disco amarillo, sin sombra (la persona sobre el disco del key
+   visual). Slide con fondo: las cinco láminas que pide la nota del Word, lisas y en la gama de UNIS
+   (naranja → rojo oscurecido, verde → guinda, azul → el azul del manual, gris → el gris del texto,
+   ocre → amarillo oscurecido; blanco a 7:1 o más en todas), con dos círculos tono sobre tono como
+   los de la portada; el anillo y su punto en amarillo, el disco sin sombra. */
+.ova-carrusel__retrato-fondo { background: var(--c-amarillo); box-shadow: none; }
+.ova-carrusel--fondo .ova-carrusel__slide {
+  background: var(--c-deep);
+  --ova-textura:
+    radial-gradient(circle at 0 100%, rgba(255, 255, 255, .07) 0 190px, transparent 191px),
+    radial-gradient(circle at 58% 0, rgba(255, 255, 255, .05) 0 96px, transparent 97px);
+}
+.ova-carrusel--fondo .ova-carrusel__lamina--naranja { background: #A92532; --ova-icono: #A92532; }
+.ova-carrusel--fondo .ova-carrusel__lamina--verde { background: var(--c-guinda); --ova-icono: var(--c-guinda); }
+.ova-carrusel--fondo .ova-carrusel__lamina--azul { background: var(--c-azul); --ova-icono: var(--c-azul); }
+.ova-carrusel--fondo .ova-carrusel__lamina--gris { background: #3A3437; --ova-icono: #3A3437; }
+.ova-carrusel--fondo .ova-carrusel__lamina--ocre { background: #6A511D; --ova-icono: #6A511D; }
+.ova-carrusel--fondo .ova-carrusel__anillo { border-color: var(--c-amarillo); opacity: 1; }
+.ova-carrusel--fondo .ova-carrusel__anillo::after { background: var(--c-amarillo); }
+.ova-carrusel--fondo .ova-carrusel__disco { box-shadow: none; }
+
+/* Carrusel, Carrusel de fotos y Slide: los puntos apagados a 3:1 o más sobre el fondo (el catálogo los
+   deja en el gris del borde, 1,2:1); las flechas con el radio de los botones y, al pasar el puntero,
+   en guinda (sobre una lámina oscura no: se perderían); las del Slide, con filete en vez de sombra. */
+.ova-carrusel:not(.ova-carrusel--fondo) .ova-carrusel__dot:not(.is-active),
+.ova-galeria__punto:not(.is-active) { background: color-mix(in srgb, var(--c-guinda) 55%, #fff); }
+.ova-carrusel__arrow { border-radius: 8px; }
+.ova-carrusel:not(.ova-carrusel--fondo) .ova-carrusel__arrow:hover { background: var(--c-guinda); color: #fff; }
+.ova-carrusel--slide .ova-carrusel__arrow { box-shadow: none; border: 1px solid var(--border-c); }
+
+/* Sombras: el catálogo trae una sombra de guinda hondo en el Slider de pasos, la Línea de tiempo tipo 2
+   y la tarjeta del Listado de pasos al pasar el puntero; aquí, la sombra neutra de las demás tarjetas. */
+.ova-tabs.ova-tabs--pasos, .ova-cronograma, .ova-stepper--lista .ova-step:hover .ova-step__card { box-shadow: var(--shadow-sm); }
+
+/* Pasos y líneas de tiempo: el hilo, el aro de los números y los puntos, en rojo. */
+.ova-acordeon--numerado, .ova-stepper--lista, .ova-ruta, .ova-hitos, .ova-cronograma, .ova-cronologia {
+  --ova-realce: var(--c-rojo);
+}
+/* Acordeón numerado: el número del paso abierto, en amarillo con la cifra en guinda hondo (8,73:1). */
+.ova-acordeon--numerado .ova-acordeon__item.is-open .ova-acordeon__num { background: var(--c-amarillo); }
+/* Listado de pasos vertical: el hilo, de un solo color. */
+.ova-stepper--lista .ova-step:not(:last-child)::before { background: var(--ova-realce); }
+/* Ruta con iconos: el disco amarillo con el icono en guinda hondo (la campana del key visual), sin
+   sombra de color; el hilo, en rojo como el de la numerada (el catálogo lo deja en el gris del borde). */
+.ova-ruta--iconos { --ova-realce: var(--c-amarillo); --ova-ruta-tenue: var(--c-rojo); }
+.ova-ruta--iconos .ova-ruta__num { box-shadow: 0 0 0 6px var(--bg-app); }
+/* Ruta de inicio a meta: la meta en amarillo; al pasar el puntero, la parada en guinda hondo (el
+   catálogo la pone en azul). */
+.ova-trayecto { --ova-meta: var(--c-amarillo); }
+.ova-trayecto__parada:hover .ova-trayecto__marca { background: var(--c-deep); }
+.ova-trayecto__parada--meta:hover .ova-trayecto__marca { background: var(--c-amarillo); }
+/* Línea de tiempo tipo 1: el eje liso, el último hito en amarillo, tarjetas y fotos sin sombra. */
+.ova-hitos { --ova-meta: var(--c-amarillo); --ova-meta-tinta: var(--c-deep); }
+.ova-hitos::before { background: var(--ova-realce); }
+.ova-hitos__texto, .ova-hitos__imagen img { box-shadow: none; }
+/* Línea de tiempo tipo 3: el avance liso y la fecha activa dentro de un anillo amarillo. */
+.ova-cronologia__eje::after { background: var(--ova-realce); }
+.ova-cronologia__hito.is-activo .ova-cronologia__punto { box-shadow: 0 0 0 5px var(--c-amarillo); }
+.ova-cronologia__hito:focus-visible .ova-cronologia__punto { outline-color: var(--c-guinda); }
+/* Slider de pasos: el paso activo en amarillo con la cifra en guinda hondo; el foco de las flechas, en
+   guinda (el amarillo no se vería sobre el blanco). */
+.ova-tabs--pasos { --ova-realce: var(--c-amarillo); --ova-hondo: var(--c-deep); }
+.ova-tabs--pasos .ova-tabs__flecha:focus-visible { outline-color: var(--c-guinda); }
+.ova-tabs--pasos .ova-tabs__btn.is-active .ova-tabs__num { box-shadow: none; }
+/* Etiqueta de un componente («Etiqueta:» del Word): en guinda (el catálogo la trae en azul). */
+.ova-etiqueta { color: var(--c-guinda); }
+
+/* =========================================================
+   CATÁLOGO · TARJETAS E INFOGRAFÍAS (familias «tarjetas» e «infografias»,
+   UNIS-001 T5)
+   El catálogo pinta con el azul de información lo que resalta sobre un fondo
+   oscuro (la tercera tarjeta conectada, el número de las que giran, la unidad
+   y los puntos de las cifras oscuras) y allí no se lee sobre el guinda. En las
+   piezas oscuras el realce es el amarillo; las franjas y los fondos van lisos
+   (§1.4). En las piezas claras con un dato, la unidad y los puntos conservan
+   el azul de información (§1.4, 2).
+   ========================================================= */
+/* Tarjetas: al pasar el puntero, la franja amarilla lisa, el borde en guinda y la sombra neutra (el
+   catálogo trae la franja en degradado y una sombra de color). El icono destacado, en un círculo
+   amarillo con el icono en guinda hondo (la campana del key visual). */
+.ova-tarjetas, .ova-mosaico, .ova-giros { --ova-realce: var(--c-amarillo); }
+.ova-tarjetas:not(.ova-tarjetas--conectadas) > .ova-tarjeta::before { background: var(--c-amarillo); }
+.ova-tarjetas:not(.ova-tarjetas--conectadas) > .ova-tarjeta:hover { border-color: var(--c-guinda); box-shadow: var(--shadow-md); }
+.ova-tarjeta__avatar--destacado { background: var(--c-amarillo); color: var(--c-deep); }
+/* Tarjetas con foto: a 28 px de su rótulo, como las demás tarjetas. El velo negro bajo el pie es el del
+   catálogo: no es un adorno, deja leer el texto sobre la foto. */
+.ova-rotulo + .ova-mosaico { margin-top: 28px; }
+/* Tarjetas conectadas: guinda hondo, guinda y la tercera en amarillo con el texto en guinda hondo
+   (8,73:1). Las claras, la misma progresión en crema, con el borde y la sombra de las demás tarjetas
+   claras (la primera columna se confundía con el fondo de la página). */
+.ova-tarjetas--claras {
+  --ova-clara-1: #FEF8EA; --ova-clara-2: #FDF1D6; --ova-clara-3: #FBE4B0;
+  border: 1px solid var(--border-c); box-shadow: var(--shadow-sm);
+}
+/* Tarjetas que giran: el frente liso en guinda hondo, con un cuarto de círculo guinda en la esquina
+   (sin degradado ni sombra de color); el reverso, con el borde y la etiqueta en guinda. El foco, en
+   guinda: el amarillo no se vería sobre el fondo claro. */
+.ova-giro__frente {
+  background: radial-gradient(circle at 100% 0, var(--c-guinda) 0 112px, transparent 113px), var(--c-deep);
+  box-shadow: var(--shadow-sm);
+}
+.ova-giro__dorso { border-color: var(--c-guinda); box-shadow: var(--shadow-sm); }
+.ova-giro__etiqueta { color: var(--c-guinda); }
+.ova-giro:focus-visible { outline-color: var(--c-guinda); }
+
+/* Puntos interactivos: el punto en guinda con un aro blanco que lo separa de la foto y el pulso en
+   amarillo; abierto, amarillo con la cifra y el aro en guinda hondo (el amarillo solo se perdía sobre
+   las zonas claras de la foto). El globo, en guinda hondo en las dos
+   versiones (el motor lo pinta con el fondo del menú: en la «Clara» salía blanco y en la «Oscura» el
+   título quedaba guinda sobre guinda), con el título en amarillo. */
+.ova-hotspot__dot { box-shadow: 0 0 0 3px #fff; }
+.ova-hotspot__pulse { background: var(--c-amarillo); }
+.ova-hotspot:hover .ova-hotspot__dot, .ova-hotspot.is-open .ova-hotspot__dot { background: var(--c-amarillo); color: var(--c-deep); box-shadow: 0 0 0 3px var(--c-deep); }
+.ova-hotspot__tooltip { background: var(--c-deep); color: #fff; box-shadow: var(--shadow-md); }
+.ova-hotspot__tooltip strong { color: var(--c-amarillo); }
+
+/* Cifras destacadas. Claras: la franja amarilla lisa (el filo de los destacados); la unidad, la
+   palabra clave y los puntos, en el azul de información; la etiqueta del bloque, en guinda como las
+   demás etiquetas. Oscuras: guinda hondo liso con el realce en
+   amarillo y la sombra neutra; en la tarjeta, un cuarto de círculo guinda en la esquina, lejos de la
+   cifra. */
+.ova-cifra--clara::before { background: var(--c-amarillo); }
+.ova-indicador--claro::before { width: 6px; background: var(--c-amarillo); }
+.ova-indicador--claro .ova-indicador__etiqueta { color: var(--c-guinda); }
+.ova-cifra--oscura, .ova-indicador--oscuro { --ova-realce: var(--c-amarillo); box-shadow: var(--shadow-md); }
+.ova-cifra--oscura { --ova-cifra-fondo: radial-gradient(circle at 100% 0, var(--c-guinda) 0 132px, transparent 133px), var(--c-deep); }
+.ova-indicador--oscuro { --ova-indicador-fondo: var(--c-deep); }
+
+/* Proceso escalonado (escalera y en fila): los peldaños suben de guinda pálido a rojo y a guinda, y
+   la cima, la meta, en amarillo con la cifra en guinda hondo; el sol, en guinda hondo (en amarillo
+   no se vería sobre el fondo claro). En fila, el filete sobre el título del primer paso y del último
+   se oscurece hasta 3:1 (guinda al 55 % y guinda hondo). */
+.ova-ciclo--escalonado, .ova-escalones {
+  --ova-escalon-2: var(--c-rojo);
+  --ova-escalon-4: var(--c-amarillo);
+  --ova-escalon-tinta-4: var(--c-deep);
+  --ova-escalon-pila-4: #FDF1D6;
+  --ova-escalon-borde-1: color-mix(in srgb, var(--c-guinda) 55%, #fff);
+}
+.ova-escalones__paso:nth-child(4) .ova-escalones__titulo { border-top-color: var(--c-deep); }
+.ova-ciclo__sol { stroke: var(--c-deep); }
+.ova-escalones__sol { color: var(--c-deep); }
+
+/* Antes y después: la línea sin resplandor, con un filete blanco que la separa de la foto, y el control
+   que se arrastra en amarillo con las flechas y el aro en guinda hondo; el pie de la figura, con aire. */
+.ova-beforeafter__handle { box-shadow: 0 0 0 1px #fff; }
+.ova-beforeafter__handle::after { background: var(--c-amarillo); color: var(--c-deep); box-shadow: 0 0 0 3px var(--c-deep); }
+.ova-beforeafter + p { margin-top: 14px; }
+
+/* =========================================================
+   CATÁLOGO · ACTIVIDADES (familia «actividades», UNIS-001 T5)
+   Pregunta, Relacionar y las presentaciones se vistieron con la evaluación
+   (abajo). Aquí, lo que el tema 7 suma.
+   ========================================================= */
+/* Para reflexionar: en el azul del aviso «Para reflexionar» del tema 1 (el motor lo deja en el color de
+   marca: el mismo rótulo salía en dos colores); el icono, plano y con el radio de los avisos. */
+.ova-callout .ova-callout__ico { box-shadow: none; border-radius: 14px; }
+.ova-callout--reflexion { background: color-mix(in srgb, var(--c-azul) 8%, transparent); border-left-color: var(--c-azul); }
+.ova-callout--reflexion .ova-callout__ico { background: var(--c-azul); }
+.ova-callout--reflexion .ova-callout__tag { color: var(--c-azul); }
+/* Lista de verificación: la casilla sin marcar, con un borde que se ve (el del catálogo da 1,29:1). */
+.ova-checklist__box { border-color: color-mix(in srgb, var(--text-pri) 65%, transparent); }
+
+/* =========================================================
+   EVALUACIÓN · las piezas que usa la evaluación de la plantilla-base
+   (presentación, Pregunta, Relacionar y el cierre). La familia «actividades»
+   se activa en T5; aquí se visten las piezas de la evaluación.
+   ========================================================= */
+/* La barra de navegación de la evaluación, al ancho de las tarjetas y con el radio de las cajas
+   (14 px): la píldora del motor dejaba la esquina del botón de 8 px a 2-3 px del borde curvo. */
+.ova-evalquiz__nav { max-width: none; border-radius: 14px; }
+/* La barra de avance, plana y en guinda en todas las preguntas: el motor la pinta en degradado y con el
+   color de la sección (azul en una de ellas); la guía §1.4, 7 pide formas planas (UNIS-001 T8, N5). */
+:is(.ova-evalquiz, .ova-evalquiz[data-color]) .ova-evalquiz__progress-fill { background: var(--c-acento); }
+/* Cierre: el texto en el color del cuerpo y «Volver a intentarlo» con su contorno */
+.ova-evalquiz__slide[data-slide="cierre"] .ova-evalquiz__section { color: var(--text-pri); font-weight: 400; }
+.ova-evalquiz__slide[data-slide="cierre"] h2 { margin: 0 0 14px; font-size: clamp(1.35rem, 2.2vw, 1.6rem); }
+.ova-evalquiz__slide[data-slide="cierre"] [data-evalquiz-restart] {
+  margin-top: 22px; border: 1.5px solid var(--c-acento); color: var(--c-acento);
+}
